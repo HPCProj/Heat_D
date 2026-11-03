@@ -1,0 +1,33 @@
+2026-11-03 16:35:38 | INFO     | Starting 2D Heat Diffusion experiment 'exp_chabane'
+2026-11-03 16:35:38 | INFO     | Starting Numba JIT warm-up for Jacobi stencil kernels...
+2026-11-03 16:35:39 | INFO     | Numba warm-up complete. Active threading layer: omp
+2026-11-03 16:35:39 | INFO     | Starting dedicated visualization & convergence pass (N=512, steps=1000)...
+2026-11-03 16:35:44 | INFO     | Visualization pass complete in 5.68s (isolated from benchmark timings). Saved 26 frames in 'results/exp_chabane/frames' and GIF at 'results/exp_chabane/heat_diffusion.gif'.
+2026-11-03 16:35:44 | INFO     | Configuration saved to results/exp_chabane/config.json
+2026-11-03 16:35:44 | INFO     | Running Jacobi benchmarks for Grid Size N = 512 x 512 (1000 steps)
+2026-11-03 16:35:45 | INFO     | [N=512] Version 0 (Serial)      | Median Time: 0.090907s | Throughput: 2861.17 MCells/s
+2026-11-03 16:35:45 | INFO     | [N=512] Version 1 (Parallel)    | p=1   | Median Time: 0.092683s | Speedup: 0.9808x | Efficiency: 0.9808 | Correct: True
+2026-11-03 16:35:45 | INFO     | [N=512] Version 1 (Parallel)    | p=2   | Median Time: 0.069123s | Speedup: 1.3151x | Efficiency: 0.6576 | Correct: True
+2026-11-03 16:35:45 | INFO     | [N=512] Version 1 (Parallel)    | p=4   | Median Time: 0.062289s | Speedup: 1.4594x | Efficiency: 0.3649 | Correct: True
+2026-11-03 16:35:46 | INFO     | [N=512] Version 1 (Parallel)    | p=8   | Median Time: 0.113956s | Speedup: 0.7977x | Efficiency: 0.0997 | Correct: True
+2026-11-03 16:35:46 | INFO     | Running Jacobi benchmarks for Grid Size N = 1024 x 1024 (1000 steps)
+2026-11-03 16:35:48 | INFO     | [N=1024] Version 0 (Serial)      | Median Time: 0.443986s | Throughput: 2352.51 MCells/s
+2026-11-03 16:35:50 | INFO     | [N=1024] Version 1 (Parallel)    | p=1   | Median Time: 0.484510s | Speedup: 0.9164x | Efficiency: 0.9164 | Correct: True
+2026-11-03 16:35:51 | INFO     | [N=1024] Version 1 (Parallel)    | p=2   | Median Time: 0.269201s | Speedup: 1.6493x | Efficiency: 0.8246 | Correct: True
+2026-11-03 16:35:52 | INFO     | [N=1024] Version 1 (Parallel)    | p=4   | Median Time: 0.198794s | Speedup: 2.2334x | Efficiency: 0.5584 | Correct: True
+2026-11-03 16:35:53 | INFO     | [N=1024] Version 1 (Parallel)    | p=8   | Median Time: 0.334346s | Speedup: 1.3279x | Efficiency: 0.1660 | Correct: True
+2026-11-03 16:35:53 | INFO     | Benchmark results saved to results/exp_chabane/results.csv
+2026-11-03 16:35:53 | INFO     | Experiment Summary Table:
+             version    n  p  steps  median_time_s  speedup  efficiency  correct_allclose
+  Version 0 (Serial)  512  1   1000       0.090907   1.0000      1.0000              True
+Version 1 (Parallel)  512  1   1000       0.092683   0.9808      0.9808              True
+Version 1 (Parallel)  512  2   1000       0.069123   1.3151      0.6576              True
+Version 1 (Parallel)  512  4   1000       0.062289   1.4594      0.3649              True
+Version 1 (Parallel)  512  8   1000       0.113956   0.7977      0.0997              True
+  Version 0 (Serial) 1024  1   1000       0.443986   1.0000      1.0000              True
+Version 1 (Parallel) 1024  1   1000       0.484510   0.9164      0.9164              True
+Version 1 (Parallel) 1024  2   1000       0.269201   1.6493      0.8246              True
+Version 1 (Parallel) 1024  4   1000       0.198794   2.2334      0.5584              True
+Version 1 (Parallel) 1024  8   1000       0.334346   1.3279      0.1660              True
+2026-11-03 16:35:54 | INFO     | Scaling plots saved in results/exp_chabane (speedup.png, efficiency.png, runtime.png)
+2026-11-03 16:35:54 | INFO     | Experiment finished successfully.
