@@ -1,0 +1,49 @@
+{
+    "experiment_name": "exp_chabane1",
+    "timestamp": "2026-11-03T16:40:38.436412",
+    "experiment_dir": "results/exp_chabane1",
+    "frames_dir": "results/exp_chabane1/frames",
+    "grid_sizes": [
+        512,
+        1024
+    ],
+    "p_list": [
+        1,
+        2,
+        4,
+        8
+    ],
+    "run_repetition": 4,
+    "steps": 2000,
+    "tolerance": 0.0001,
+    "check_interval": 50,
+    "frame_interval": 40,
+    "anim_grid_size": 512,
+    "use_hotspot": true,
+    "boundary_conditions": {
+        "top": 100.0,
+        "left": 60.0,
+        "right": 0.0,
+        "bottom": 0.0
+    },
+    "visualization_metrics": {
+        "visualization_total_time_s": 10.8121,
+        "frames_saved_count": 51,
+        "gif_path": "results/exp_chabane1/heat_diffusion.gif",
+        "final_max_diff": 0.01465339
+    },
+    "hardware_and_env": {
+        "logical_cpu_cores": 64,
+        "max_allocated_numba_threads": 64,
+        "requested_threading_layer": "omp",
+        "active_threading_layer": "omp",
+        "os_system": "Linux",
+        "os_release": "6.17.0-35-generic",
+        "machine_arch": "x86_64",
+        "processor": "x86_64",
+        "python_version": "3.10.12",
+        "numpy_version": "2.2.6",
+        "numba_version": "0.68.1",
+        "pandas_version": "2.3.3"
+    }
+}
