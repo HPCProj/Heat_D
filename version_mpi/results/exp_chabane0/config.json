@@ -1,0 +1,40 @@
+{
+    "experiment_name": "exp_chabane0",
+    "timestamp": "2026-11-03T17:16:22.933428",
+    "experiment_dir": "results/exp_chabane0",
+    "frames_dir": "results/exp_chabane0/frames",
+    "grid_sizes": [
+        512,
+        1024,
+        2048
+    ],
+    "p_list": [
+        1,
+        2,
+        4,
+        8
+    ],
+    "run_repetition": 3,
+    "steps": 1000,
+    "tolerance": 0.0001,
+    "check_interval": 50,
+    "frame_interval": 40,
+    "use_hotspot": true,
+    "visualization": {
+        "anim_grid_size": 512,
+        "anim_ranks": 4,
+        "frames_count": 26,
+        "gif_path": "results/exp_chabane0/heat_diffusion.gif",
+        "visualization_time_s": 6.7449
+    },
+    "system": {
+        "os": "Linux",
+        "os_release": "6.17.0-35-generic",
+        "machine_arch": "x86_64",
+        "cpu_cores_logical": 64,
+        "available_ram_gb": 571.94,
+        "python_version": "3.10.12",
+        "numpy_version": "2.2.6",
+        "pandas_version": "2.3.3"
+    }
+}
