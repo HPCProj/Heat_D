@@ -1,0 +1,39 @@
+2026-11-09 14:57:36 | INFO     | Starting MPI 2D Heat Diffusion experiment 'exp_chabane3'
+2026-11-09 14:57:36 | INFO     | Pre-compiling and caching Numba stencil kernels...
+2026-11-09 14:57:37 | INFO     | Running dedicated MPI animation & convergence pass (N=512, p=4, steps=15000)...
+2026-11-09 14:59:06 | INFO     | MPI Animation & GIF saved in 89.72s (376 frames in results/exp_chabane3/frames)
+2026-11-09 14:59:06 | INFO     | Configuration saved to results/exp_chabane3/config.json
+2026-11-09 14:59:06 | INFO     | Computing Serial Baseline for N = 512 (15000 steps)...
+2026-11-09 14:59:10 | INFO     | [Baseline] N=512 | Serial median runtime: 1.3204s
+2026-11-09 14:59:19 | INFO     | [MPI] N=512  | p=1   | Total: 1.7599s | Comp: 1.6249s | Halo: 0.0369s (2.1%) | Allred: 0.0875s | Speedup: 0.75x | Eff: 0.75 | Correct: True
+2026-11-09 14:59:24 | INFO     | [MPI] N=512  | p=2   | Total: 1.0015s | Comp: 0.8375s | Halo: 0.3088s (30.8%) | Allred: 0.0510s | Speedup: 1.32x | Eff: 0.66 | Correct: True
+2026-11-09 14:59:29 | INFO     | [MPI] N=512  | p=4   | Total: 0.7020s | Comp: 0.4313s | Halo: 0.3161s (45.0%) | Allred: 0.0214s | Speedup: 1.88x | Eff: 0.47 | Correct: True
+2026-11-09 14:59:37 | INFO     | [MPI] N=512  | p=8   | Total: 1.2168s | Comp: 0.2940s | Halo: 1.0179s (83.7%) | Allred: 0.0733s | Speedup: 1.09x | Eff: 0.14 | Correct: True
+2026-11-09 14:59:37 | INFO     | Computing Serial Baseline for N = 1024 (15000 steps)...
+2026-11-09 14:59:57 | INFO     | [Baseline] N=1024 | Serial median runtime: 6.4306s
+2026-11-09 15:00:23 | INFO     | [MPI] N=1024 | p=1   | Total: 7.8765s | Comp: 7.4880s | Halo: 0.0410s (0.5%) | Allred: 0.3358s | Speedup: 0.82x | Eff: 0.82 | Correct: True
+2026-11-09 15:00:39 | INFO     | [MPI] N=1024 | p=2   | Total: 4.1555s | Comp: 3.8406s | Halo: 1.0312s (24.8%) | Allred: 0.1927s | Speedup: 1.55x | Eff: 0.77 | Correct: True
+2026-11-09 15:00:48 | INFO     | [MPI] N=1024 | p=4   | Total: 2.0456s | Comp: 1.6520s | Halo: 0.5422s (26.5%) | Allred: 0.0660s | Speedup: 3.14x | Eff: 0.79 | Correct: True
+2026-11-09 15:01:01 | INFO     | [MPI] N=1024 | p=8   | Total: 3.2060s | Comp: 1.2752s | Halo: 2.2783s (71.1%) | Allred: 0.2247s | Speedup: 2.01x | Eff: 0.25 | Correct: True
+2026-11-09 15:01:02 | INFO     | Computing Serial Baseline for N = 2048 (15000 steps)...
+2026-11-09 15:03:28 | INFO     | [Baseline] N=2048 | Serial median runtime: 48.8596s
+2026-11-09 15:05:38 | INFO     | [MPI] N=2048 | p=1   | Total: 42.0899s | Comp: 40.5954s | Halo: 0.1029s (0.2%) | Allred: 1.3507s | Speedup: 1.16x | Eff: 1.16 | Correct: True
+2026-11-09 15:06:48 | INFO     | [MPI] N=2048 | p=2   | Total: 22.2826s | Comp: 21.2404s | Halo: 2.6658s (12.0%) | Allred: 0.7316s | Speedup: 2.19x | Eff: 1.10 | Correct: True
+2026-11-09 15:07:18 | INFO     | [MPI] N=2048 | p=4   | Total: 9.2521s | Comp: 7.6439s | Halo: 2.0583s (22.2%) | Allred: 0.2658s | Speedup: 5.28x | Eff: 1.32 | Correct: True
+2026-11-09 15:07:59 | INFO     | [MPI] N=2048 | p=8   | Total: 12.2329s | Comp: 5.0536s | Halo: 7.8116s (63.9%) | Allred: 0.4762s | Speedup: 3.99x | Eff: 0.50 | Correct: True
+2026-11-09 15:07:59 | INFO     | MPI Experiment Summary Table:
+   n  p  total_time_s  compute_time_s  halo_time_s  halo_share_pct  speedup  efficiency  correct_allclose
+ 512  1      1.759897        1.624947     0.036867            2.09   0.7503      0.7503              True
+ 512  2      1.001521        0.837481     0.308838           30.84   1.3184      0.6592              True
+ 512  4      0.702022        0.431252     0.316088           45.03   1.8808      0.4702              True
+ 512  8      1.216817        0.293954     1.017940           83.66   1.0851      0.1356              True
+1024  1      7.876477        7.488004     0.041016            0.52   0.8164      0.8164              True
+1024  2      4.155519        3.840606     1.031151           24.81   1.5475      0.7737              True
+1024  4      2.045570        1.652020     0.542230           26.51   3.1437      0.7859              True
+1024  8      3.206020        1.275170     2.278263           71.06   2.0058      0.2507              True
+2048  1     42.089885       40.595401     0.102859            0.24   1.1608      1.1608              True
+2048  2     22.282586       21.240381     2.665751           11.96   2.1927      1.0964              True
+2048  4      9.252099        7.643945     2.058338           22.25   5.2809      1.3202              True
+2048  8     12.232899        5.053554     7.811601           63.86   3.9941      0.4993              True
+2026-11-09 15:08:00 | INFO     | Plots saved in results/exp_chabane3 (speedup.png, efficiency.png, comm_comp_breakdown.png, halo_share.png)
+2026-11-09 15:08:00 | INFO     | MPI 2D Heat Diffusion Experiment completed successfully.
