@@ -1,0 +1,71 @@
+{
+    "experiment_name": "version3_docker_bridge",
+    "timestamp": "2026-11-19T23:09:24.180557",
+    "experiment_dir": "results/version3_docker_bridge",
+    "frames_dir": "results/version3_docker_bridge/frames",
+    "grid_sizes": [
+        512,
+        1024,
+        2048
+    ],
+    "p_list": [
+        1,
+        2,
+        4,
+        8,
+        16
+    ],
+    "run_repetition": 3,
+    "steps": 5000,
+    "tolerance": 0.0001,
+    "check_interval": 50,
+    "frame_interval": 40,
+    "use_hotspot": false,
+    "visualization": [
+        {
+            "anim_grid_size": 512,
+            "anim_ranks": 1,
+            "frames_count": 126,
+            "gif_path": "results/version3_docker_bridge/anim_p1/heat_diffusion_p1.gif",
+            "visualization_time_s": 32.7439
+        },
+        {
+            "anim_grid_size": 512,
+            "anim_ranks": 2,
+            "frames_count": 126,
+            "gif_path": "results/version3_docker_bridge/anim_p2/heat_diffusion_p2.gif",
+            "visualization_time_s": 57.3851
+        },
+        {
+            "anim_grid_size": 512,
+            "anim_ranks": 4,
+            "frames_count": 126,
+            "gif_path": "results/version3_docker_bridge/anim_p4/heat_diffusion_p4.gif",
+            "visualization_time_s": 21.1142
+        },
+        {
+            "anim_grid_size": 512,
+            "anim_ranks": 8,
+            "frames_count": 126,
+            "gif_path": "results/version3_docker_bridge/anim_p8/heat_diffusion_p8.gif",
+            "visualization_time_s": 39.7822
+        },
+        {
+            "anim_grid_size": 512,
+            "anim_ranks": 16,
+            "frames_count": 126,
+            "gif_path": "results/version3_docker_bridge/anim_p16/heat_diffusion_p16.gif",
+            "visualization_time_s": 90.4311
+        }
+    ],
+    "system": {
+        "os": "Linux",
+        "os_release": "6.17.0-1011-oracle",
+        "machine_arch": "x86_64",
+        "cpu_cores_logical": 48,
+        "available_ram_gb": 141.35,
+        "python_version": "3.12.16",
+        "numpy_version": "2.5.5",
+        "pandas_version": "3.1.1"
+    }
+}
