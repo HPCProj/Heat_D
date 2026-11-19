@@ -103,7 +103,7 @@ def main():
     parser.add_argument("--check_interval", type=int, default=50)
     parser.add_argument("--frame_interval", type=int, default=40)
     parser.add_argument("--frames_dir", type=str, default=None)
-    parser.add_argument("--no_hotspot", action="store_true")
+    parser.add_argument("--hotspot", action="store_true")
     parser.add_argument("--warmup", action="store_true")
     parser.add_argument("--animate", action="store_true")
     parser.add_argument("--save_final_grid", type=str, default=None)
@@ -121,7 +121,7 @@ def main():
     size = comm.Get_size()
     n = args.size
     steps = args.steps
-    use_hotspot = not args.no_hotspot
+    use_hotspot =  args.hotspot
 
     if n % size != 0:
         if rank == 0:

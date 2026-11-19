@@ -32,7 +32,7 @@ def parse_args():
     parser.add_argument("--frame_interval", type=int, default=40)
     parser.add_argument("--anim_grid_size", type=int, default=512)
     parser.add_argument("--anim_p", type=int, default=4)
-    parser.add_argument("--no_hotspot", action="store_true")
+    parser.add_argument("--hotspot", action="store_true")
     parser.add_argument("--hostfile", type=str, default=None)
     return parser.parse_args()
 
@@ -145,10 +145,10 @@ def build_mpirun_base(p):
     return cmd
 
 
-def run_mpi_animation_pass():
-    anim_n = args.anim_grid_size if args.anim_grid_size in grid_sizes else grid_sizes[0]
-    anim_p = args.anim_p if anim_n % args.anim_p == 0 else p_values[0]
-    os.makedirs(frames_dir, exist_ok=True)
+def run_mpi_animation_pass_for_p(anim_n, anim_p):
+    p_target_dir = os.path.join(target_dir, f"anim_p{anim_p}")
+    p_frames_dir = os.path.join(p_target_dir, "frames")
+    os.makedirs(p_frames_dir, exist_ok=True)
 
     logger.info(f"Running dedicated MPI animation & convergence pass (N={anim_n}, p={anim_p}, steps={args.steps})...")
     t0 = time.perf_counter()
@@ -159,33 +159,33 @@ def run_mpi_animation_pass():
         "--steps", str(args.steps),
         "--check_interval", str(args.check_interval),
         "--frame_interval", str(args.frame_interval),
-        "--frames_dir", frames_dir,
+        "--frames_dir", p_frames_dir,
         "--animate"
     ]
-    if args.no_hotspot:
-        cmd.append("--no_hotspot")
+    if args.hotspot:
+        cmd.append("--hotspot")
 
     res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     if res.returncode != 0:
-        logger.error(f"Animation pass failed: {res.stderr.strip()}")
-        return {}
+        logger.error(f"Animation pass failed for p={anim_p}: {res.stderr.strip()}")
+        return None
 
     anim_meta = {}
     for line in res.stdout.splitlines():
         if line.startswith("JSON_ANIM:"):
             anim_meta = json.loads(line.replace("JSON_ANIM:", ""))
 
-    frame_files = sorted(glob.glob(os.path.join(frames_dir, "frame_*.png")))
-    gif_path = os.path.join(target_dir, "heat_diffusion.gif")
+    frame_files = sorted(glob.glob(os.path.join(p_frames_dir, "frame_*.png")))
+    gif_path = os.path.join(p_target_dir, f"heat_diffusion_p{anim_p}.gif")
     if frame_files:
         frames_imgs = [imageio.imread(fp) for fp in frame_files]
         imageio.mimsave(gif_path, frames_imgs, fps=10, loop=0)
         final_img = imageio.imread(frame_files[-1])
-        imageio.imwrite(os.path.join(target_dir, "heatmap_final.png"), final_img)
+        imageio.imwrite(os.path.join(p_target_dir, f"heatmap_final_p{anim_p}.png"), final_img)
 
     if "convergence" in anim_meta and anim_meta["convergence"]:
         conv_df = pd.DataFrame(anim_meta["convergence"])
-        conv_df.to_csv(os.path.join(target_dir, "convergence.csv"), index=False)
+        conv_df.to_csv(os.path.join(p_target_dir, f"convergence_p{anim_p}.csv"), index=False)
 
         plt.figure(figsize=(8, 5.5))
         plt.plot(conv_df["step"], conv_df["max_diff"], marker="o", markersize=4, linewidth=2, color="#d95f02")
@@ -197,11 +197,11 @@ def run_mpi_animation_pass():
         plt.grid(True, which="both", linestyle="--", alpha=0.6)
         plt.legend()
         plt.tight_layout()
-        plt.savefig(os.path.join(target_dir, "convergence.png"), dpi=300)
+        plt.savefig(os.path.join(p_target_dir, f"convergence_p{anim_p}.png"), dpi=300)
         plt.close()
 
     viz_time = time.perf_counter() - t0
-    logger.info(f"MPI Animation & GIF saved in {viz_time:.2f}s ({len(frame_files)} frames in {frames_dir})")
+    logger.info(f"MPI Animation & GIF for p={anim_p} saved in {viz_time:.2f}s ({len(frame_files)} frames in {p_frames_dir})")
     return {
         "anim_grid_size": anim_n,
         "anim_ranks": anim_p,
@@ -209,6 +209,18 @@ def run_mpi_animation_pass():
         "gif_path": gif_path,
         "visualization_time_s": round(viz_time, 4)
     }
+
+def run_mpi_animation_pass():
+    anim_n = args.anim_grid_size if args.anim_grid_size in grid_sizes else grid_sizes[0]
+    all_viz_info = []
+    for p in p_values:
+        if anim_n % p != 0:
+            logger.warning(f"Skipping animation for N={anim_n}, p={p} because {anim_n} is not divisible by {p}.")
+            continue
+        info = run_mpi_animation_pass_for_p(anim_n, p)
+        if info:
+            all_viz_info.append(info)
+    return all_viz_info
 
 
 def run_mpi_benchmark_trial(p, n, check_grid_path=None):
@@ -224,8 +236,8 @@ def run_mpi_benchmark_trial(p, n, check_grid_path=None):
         "--steps", str(args.steps),
         "--check_interval", str(args.check_interval)
     ]
-    if args.no_hotspot:
-        cmd.append("--no_hotspot")
+    if args.hotspot:
+        cmd.append("hotspot")
     if check_grid_path:
         cmd.extend(["--save_final_grid", check_grid_path])
 
@@ -258,7 +270,7 @@ def save_config(viz_info):
         "tolerance": args.tolerance,
         "check_interval": args.check_interval,
         "frame_interval": args.frame_interval,
-        "use_hotspot": not args.no_hotspot,
+        "use_hotspot":args.hotspot,
         "visualization": viz_info,
         "system": {
             "os": platform.system(),
@@ -365,7 +377,7 @@ def main():
 
     for n in grid_sizes:
         logger.info(f"Computing Serial Baseline for N = {n} ({args.steps} steps)...")
-        t_serial, u_serial_ref = compute_serial_reference(n, args.steps, args.run_repetition, not args.no_hotspot)
+        t_serial, u_serial_ref = compute_serial_reference(n, args.steps, args.run_repetition, args.hotspot)
         logger.info(f"[Baseline] N={n} | Serial median runtime: {t_serial:.4f}s")
 
         for p in p_values:
