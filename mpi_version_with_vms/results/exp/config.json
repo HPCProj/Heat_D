@@ -1,0 +1,87 @@
+{
+    "experiment_name": "exp",
+    "timestamp": "2026-11-24T19:39:01.049024",
+    "experiment_dir": "results/exp",
+    "frames_dir": "results/exp/frames",
+    "grid_sizes": [
+        512,
+        1024,
+        2048
+    ],
+    "p_list": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        64
+    ],
+    "run_repetition": 3,
+    "steps": 2000,
+    "tolerance": 0.0001,
+    "check_interval": 50,
+    "frame_interval": 40,
+    "use_hotspot": false,
+    "visualization": [
+        {
+            "anim_grid_size": 512,
+            "anim_ranks": 1,
+            "frames_count": 51,
+            "gif_path": "results/exp/anim_p1/heat_diffusion_p1.gif",
+            "visualization_time_s": 15.1055
+        },
+        {
+            "anim_grid_size": 512,
+            "anim_ranks": 2,
+            "frames_count": 51,
+            "gif_path": "results/exp/anim_p2/heat_diffusion_p2.gif",
+            "visualization_time_s": 15.0886
+        },
+        {
+            "anim_grid_size": 512,
+            "anim_ranks": 4,
+            "frames_count": 51,
+            "gif_path": "results/exp/anim_p4/heat_diffusion_p4.gif",
+            "visualization_time_s": 16.6286
+        },
+        {
+            "anim_grid_size": 512,
+            "anim_ranks": 8,
+            "frames_count": 51,
+            "gif_path": "results/exp/anim_p8/heat_diffusion_p8.gif",
+            "visualization_time_s": 35.607
+        },
+        {
+            "anim_grid_size": 512,
+            "anim_ranks": 16,
+            "frames_count": 51,
+            "gif_path": "results/exp/anim_p16/heat_diffusion_p16.gif",
+            "visualization_time_s": 87.461
+        },
+        {
+            "anim_grid_size": 512,
+            "anim_ranks": 32,
+            "frames_count": 51,
+            "gif_path": "results/exp/anim_p32/heat_diffusion_p32.gif",
+            "visualization_time_s": 210.8645
+        },
+        {
+            "anim_grid_size": 512,
+            "anim_ranks": 64,
+            "frames_count": 51,
+            "gif_path": "results/exp/anim_p64/heat_diffusion_p64.gif",
+            "visualization_time_s": 604.6451
+        }
+    ],
+    "system": {
+        "os": "Linux",
+        "os_release": "7.0.0-1018-aws",
+        "machine_arch": "x86_64",
+        "cpu_cores_logical": 2,
+        "available_ram_gb": 2.77,
+        "python_version": "3.14.4",
+        "numpy_version": "2.5.5",
+        "pandas_version": "3.1.1"
+    }
+}

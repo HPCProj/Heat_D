@@ -1,0 +1,60 @@
+2026-11-24 19:22:34 | INFO     | Starting MPI 2D Heat Diffusion experiment 'exp'
+2026-11-24 19:22:34 | INFO     | Pre-compiling and caching Numba stencil kernels...
+2026-11-24 19:22:35 | INFO     | Running dedicated MPI animation & convergence pass (N=512, p=1, steps=2000)...
+2026-11-24 19:22:50 | INFO     | MPI Animation & GIF for p=1 saved in 15.11s (51 frames in results/exp/anim_p1/frames)
+2026-11-24 19:22:50 | INFO     | Running dedicated MPI animation & convergence pass (N=512, p=2, steps=2000)...
+2026-11-24 19:23:05 | INFO     | MPI Animation & GIF for p=2 saved in 15.09s (51 frames in results/exp/anim_p2/frames)
+2026-11-24 19:23:05 | INFO     | Running dedicated MPI animation & convergence pass (N=512, p=4, steps=2000)...
+2026-11-24 19:23:22 | INFO     | MPI Animation & GIF for p=4 saved in 16.63s (51 frames in results/exp/anim_p4/frames)
+2026-11-24 19:23:22 | INFO     | Running dedicated MPI animation & convergence pass (N=512, p=8, steps=2000)...
+2026-11-24 19:23:58 | INFO     | MPI Animation & GIF for p=8 saved in 35.61s (51 frames in results/exp/anim_p8/frames)
+2026-11-24 19:23:58 | INFO     | Running dedicated MPI animation & convergence pass (N=512, p=16, steps=2000)...
+2026-11-24 19:25:25 | INFO     | MPI Animation & GIF for p=16 saved in 87.46s (51 frames in results/exp/anim_p16/frames)
+2026-11-24 19:25:25 | INFO     | Running dedicated MPI animation & convergence pass (N=512, p=32, steps=2000)...
+2026-11-24 19:28:56 | INFO     | MPI Animation & GIF for p=32 saved in 210.86s (51 frames in results/exp/anim_p32/frames)
+2026-11-24 19:28:56 | INFO     | Running dedicated MPI animation & convergence pass (N=512, p=64, steps=2000)...
+2026-11-24 19:39:01 | INFO     | MPI Animation & GIF for p=64 saved in 604.65s (51 frames in results/exp/anim_p64/frames)
+2026-11-24 19:39:01 | INFO     | Configuration saved to results/exp/config.json
+2026-11-24 19:39:01 | INFO     | Computing Serial Baseline for N = 512 (2000 steps)...
+2026-11-24 19:39:02 | INFO     | [Baseline] N=512 | Serial median runtime: 0.3599s
+2026-11-24 19:39:05 | INFO     | [MPI] N=512  | p=1   | Total: 0.3953s | Comp: 0.3648s | Halo: 0.0067s (1.7%) | Allred: 0.0196s | Speedup: 0.91x | Eff: 0.91 | Correct: True
+2026-11-24 19:39:08 | INFO     | [MPI] N=512  | p=2   | Total: 0.2984s | Comp: 0.2046s | Halo: 0.0845s (28.3%) | Allred: 0.0154s | Speedup: 1.21x | Eff: 0.60 | Correct: True
+2026-11-24 19:39:12 | INFO     | [MPI] N=512  | p=4   | Total: 0.5201s | Comp: 0.0764s | Halo: 0.4321s (83.1%) | Allred: 0.0267s | Speedup: 0.69x | Eff: 0.17 | Correct: True
+2026-11-24 19:39:28 | INFO     | [MPI] N=512  | p=8   | Total: 3.7000s | Comp: 0.1205s | Halo: 3.4044s (92.0%) | Allred: 0.3109s | Speedup: 0.10x | Eff: 0.01 | Correct: True
+2026-11-24 19:40:32 | INFO     | [MPI] N=512  | p=16  | Total: 17.7310s | Comp: 0.0797s | Halo: 16.5783s (93.5%) | Allred: 1.9175s | Speedup: 0.02x | Eff: 0.00 | Correct: True
+2026-11-24 19:40:32 | WARNING  | Skipping p=32 for N=512: Estimated memory (2.7 GB) exceeds available RAM (2.8 GB).
+2026-11-24 19:40:32 | INFO     | Computing Serial Baseline for N = 1024 (2000 steps)...
+2026-11-24 19:40:37 | INFO     | [Baseline] N=1024 | Serial median runtime: 1.4847s
+2026-11-24 19:40:44 | INFO     | [MPI] N=1024 | p=1   | Total: 1.5923s | Comp: 1.5105s | Halo: 0.0089s (0.6%) | Allred: 0.0703s | Speedup: 0.93x | Eff: 0.93 | Correct: True
+2026-11-24 19:40:49 | INFO     | [MPI] N=1024 | p=2   | Total: 1.0968s | Comp: 0.8315s | Halo: 0.2580s (23.5%) | Allred: 0.0441s | Speedup: 1.35x | Eff: 0.68 | Correct: True
+2026-11-24 19:40:54 | INFO     | [MPI] N=1024 | p=4   | Total: 0.8921s | Comp: 0.3547s | Halo: 0.5445s (61.0%) | Allred: 0.0390s | Speedup: 1.66x | Eff: 0.42 | Correct: True
+2026-11-24 19:41:18 | INFO     | [MPI] N=1024 | p=8   | Total: 5.4600s | Comp: 0.5452s | Halo: 5.0293s (92.1%) | Allred: 0.3036s | Speedup: 0.27x | Eff: 0.03 | Correct: True
+2026-11-24 19:42:24 | INFO     | [MPI] N=1024 | p=16  | Total: 18.4130s | Comp: 0.2210s | Halo: 17.7136s (96.2%) | Allred: 1.2603s | Speedup: 0.08x | Eff: 0.01 | Correct: True
+2026-11-24 19:42:24 | WARNING  | Skipping p=32 for N=1024: Estimated memory (2.7 GB) exceeds available RAM (2.9 GB).
+2026-11-24 19:42:24 | INFO     | Computing Serial Baseline for N = 2048 (2000 steps)...
+2026-11-24 19:43:01 | INFO     | [Baseline] N=2048 | Serial median runtime: 12.3603s
+2026-11-24 19:43:42 | INFO     | [MPI] N=2048 | p=1   | Total: 12.8727s | Comp: 12.5224s | Halo: 0.0295s (0.2%) | Allred: 0.3108s | Speedup: 0.96x | Eff: 0.96 | Correct: True
+2026-11-24 19:44:05 | INFO     | [MPI] N=2048 | p=2   | Total: 7.1090s | Comp: 6.1198s | Halo: 0.8102s (11.4%) | Allred: 0.1671s | Speedup: 1.74x | Eff: 0.87 | Correct: True
+2026-11-24 19:44:17 | INFO     | [MPI] N=2048 | p=4   | Total: 2.7328s | Comp: 2.0682s | Halo: 0.8552s (31.3%) | Allred: 0.1059s | Speedup: 4.52x | Eff: 1.13 | Correct: True
+2026-11-24 19:44:47 | INFO     | [MPI] N=2048 | p=8   | Total: 8.0061s | Comp: 2.1274s | Halo: 6.3771s (79.7%) | Allred: 0.3645s | Speedup: 1.54x | Eff: 0.19 | Correct: True
+2026-11-24 19:45:52 | INFO     | [MPI] N=2048 | p=16  | Total: 18.0388s | Comp: 1.3228s | Halo: 16.8223s (93.3%) | Allred: 1.2336s | Speedup: 0.69x | Eff: 0.04 | Correct: True
+2026-11-24 19:45:52 | WARNING  | Skipping p=32 for N=2048: Estimated memory (2.7 GB) exceeds available RAM (2.9 GB).
+2026-11-24 19:45:52 | INFO     | MPI Experiment Summary Table:
+   n  p  total_time_s  compute_time_s  halo_time_s  halo_share_pct  speedup  efficiency  correct_allclose
+ 512  1      0.395284        0.364776     0.006738            1.70   0.9105      0.9105              True
+ 512  2      0.298351        0.204601     0.084468           28.31   1.2063      0.6031              True
+ 512  4      0.520064        0.076415     0.432071           83.08   0.6920      0.1730              True
+ 512  8      3.700032        0.120495     3.404387           92.01   0.0973      0.0122              True
+ 512 16     17.730983        0.079704    16.578278           93.50   0.0203      0.0013              True
+1024  1      1.592346        1.510497     0.008912            0.56   0.9324      0.9324              True
+1024  2      1.096848        0.831520     0.258005           23.52   1.3536      0.6768              True
+1024  4      0.892149        0.354699     0.544513           61.03   1.6642      0.4160              True
+1024  8      5.459959        0.545187     5.029294           92.11   0.2719      0.0340              True
+1024 16     18.413006        0.220977    17.713635           96.20   0.0806      0.0050              True
+2048  1     12.872727       12.522389     0.029527            0.23   0.9602      0.9602              True
+2048  2      7.109003        6.119763     0.810249           11.40   1.7387      0.8693              True
+2048  4      2.732810        2.068183     0.855237           31.30   4.5229      1.1307              True
+2048  8      8.006115        2.127402     6.377124           79.65   1.5439      0.1930              True
+2048 16     18.038842        1.322786    16.822296           93.26   0.6852      0.0428              True
+2026-11-24 19:45:54 | INFO     | Plots saved in results/exp (speedup.png, efficiency.png, comm_comp_breakdown.png, halo_share.png)
+2026-11-24 19:45:54 | INFO     | MPI 2D Heat Diffusion Experiment completed successfully.
